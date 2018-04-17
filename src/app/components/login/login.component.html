@@ -1,0 +1,79 @@
+<img class="background fondo" alt="">
+<div class="container" style="width: 500px; margin-top: 60px">
+<mat-card class="example-card">
+    <mat-card-header>
+     
+    </mat-card-header>
+   <img style="width: 100%;" src="../../../assets/img/Credintegral.png">
+    
+    <mat-card-content>
+        <div class="row">
+            <div class="col text-center">
+              <form action="">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Usuario" >
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Contraseña" #input maxlength="4" [attr.maxLength]="maxTextLen" disabled="true" [type]="!hide ? 'password' : 'text'">
+                  </mat-form-field>
+              </form>
+            </div>
+            <div class="col-4 text-center" style="margin-right: 20px"> 
+              <mat-grid-list cols="3" rowHeight="30px" >
+                <mat-grid-tile
+                    *ngFor="let tile of ChangeVar"
+                    id="tile.text"
+                    [colspan]="tile.cols"
+                    [rowspan]="tile.rows"
+                    [style.background]="tile.color"
+                    (mouseenter)="seeDots()"
+                    (mouseleave)="seeNumber()"
+                    style="color:white"
+                    (click)="setPassword(tile.text)">
+                  <div *ngIf="showNumber">{{tile.text}}</div>
+                  <div *ngIf="showDots">{{tile.mask}}</div>
+                </mat-grid-tile>
+                <mat-grid-tile (click)="clearPassword()" colspan="2" rowspan="1" style="background: #E4C842; color:white">Borrar</mat-grid-tile>
+              </mat-grid-list>
+            </div>
+          </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="text-center">
+          <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+          <br>
+        <button mat-raised-button [routerLink]="navbar" (click)="log()">Iniciar Sesion</button>
+      </div>
+    </mat-card-actions>
+    <mat-divider></mat-divider>
+    <div class="text-center">
+    <label for="ContentPlaceHolder1"><a href="userRecover">Olvidé mi usuario</a></label>
+  </div>
+    <div class="text-center">
+    <label for="ContentPlaceHolder1"><a href="passRecover">Olvidé mi Contraseña</a></label>
+  </div>
+    <div class="text-center">
+    <label for="ContentPlaceHolder1"><a href="userpassRecover">Olvidé mi Usuario y Contraseña</a></label>
+  </div>
+    <div class="text-center">
+    <label for="ContentPlaceHolder1"><a href="~/address">No me encuentro registrado</a></label>
+  </div>
+    <div class="text-center">
+    <label for="ContentPlaceHolder1"><a href="~/address">Tengo problemas para conectarme</a></label>
+  </div>
+    
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+        <div class="text-center">
+        <button mat-raised-button [routerLink]="navbar" (click)="singUp()">Crear Cuenta</button>
+      </div>
+      </mat-card-actions>
+  </mat-card>
+  </div>
+
+
+
+
+
+
+

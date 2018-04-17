@@ -1,0 +1,73 @@
+
+<img class="background fondo" alt="">
+
+
+
+<div class="container" style="width: 500px; margin-top: 60px">
+    <form [formGroup]="firstFormGroup" (ngSubmit)="recoverUser()">
+  <mat-card class="example-card">
+    <mat-card-header>
+
+    </mat-card-header>
+    <img style="width: 100%;" src="../../../assets/img/Credintegral.png">
+
+    <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <h4 style="margin-left: 110px">Recuperar Usuario</h4>
+            </div>
+            <div class="row" style="width: 100%">
+              <div class="col text-center" style="margin-left: 50px;margin-right: 50px; width: 100%">
+                
+                  <mat-form-field >
+                      <mat-select placeholder="Tipo de Documento" style="text-align: left" formControlName="document_type">
+                          <mat-option *ngFor="let doc of docType" [value]="doc.value">
+                            {{ doc.viewValue }}
+                          </mat-option>
+                        </mat-select>
+              </mat-form-field>
+                <br>
+                <mat-form-field>
+                <input matInput placeholder="Numero de Identificacion" formControlName="identification">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                <input matInput placeholder="Contraseña" [type]="!hide ? 'password' : 'text'" formControlName="password">
+              </mat-form-field>
+              <br>
+              <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+                <div *ngIf="result">
+                  <h3>Su usuario es: </h3>
+                <h4 style="color: blue">{{userRecoverres}}</h4>
+                </div>
+            </div>
+        
+              </div>
+             
+            </div>
+          
+          </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+        <div class="card-action text-center" style="background: white; ">
+            <button mat-raised-button type="submit">Recuperar</button>
+            <button mat-raised-button [routerLink]="login" (click)="goBack()">Regresar</button>
+          </div>
+    </mat-card-actions>
+  </mat-card>  </form> 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

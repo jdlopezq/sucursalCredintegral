@@ -1,0 +1,53 @@
+<mat-toolbar class="header" style="padding-left: 0">
+  <img height="60px" width="250px" src="../../../assets/img/Credintegral.png">
+  <div style="margin-left: 16px"> Portal Transaccional </div>
+ 
+  <span class='spacer'></span>
+  <button mat-raised-button (click)="goLogIn()" >Salir</button>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav">
+    <div class="col" style="padding: 0">
+     <div class="imgContainer">
+       <img  height="150px" style="width: 100%" src="../../../assets/img/wave.png">
+       <div class="centered" style="margin-left: 70px;">
+         <div class="text-left">
+         <div style="font-weight: bold;">{{userInfo.full_name}}</div>
+         <!-- <div style="font-weight: bold;">LOPEZ QUINTANA  </div> -->
+         <div >{{userInfo.email}} </div>
+        </div>
+       </div>  
+        
+     </div>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let link of links" (click)="showInfo(link)" style="color:black; width: 100%">
+          <a matLine [routerLink]="link.value" href="#">{{ link.name }}</a>
+          <!-- <button mat-icon-button (click)="showInfo(link)"> -->
+          <!-- </button> -->
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+      <app-initialpage *ngIf="showIni"></app-initialpage>
+    <div  *ngIf="!showIni">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar class="example-footer">
+    <div class="row" style="margin-top: 50px; margin-left: 0; margin-bottom: 50px">
+        <div class="col" style="color:white ">
+          <div  style="font-size: 9px">Ultimo ingreso: Wed Apr 11 2018 18:29:13 GMT-0500 (Hora est. Pacífico, Sudamérica)
+            </div>
+          <div style="font-size: 9px">Fecha Actual: {{actualTime}}</div>
+        </div>
+        <div class="col" style="color:white ">
+            <div  style="font-size: 9px">Su dirección IP: {{actualip.ip}}</div>
+            <div  style="font-size: 9px">Direccion IP anterior : {{userInfo.ip_address}}</div>
+        </div>
+      </div>
+</mat-toolbar>
